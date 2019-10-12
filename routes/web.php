@@ -13,5 +13,8 @@
 
 Route::get('/', function () {
     return view('template.content');
-    //return view('welcome');
 });
+Route::get('/companias', 'Companias@index');
+Route::get('/roles', 'Roles@index');
+Route::get('/usuarios', 'Users@index');
+Route::get('/modules', 'Modules@index');

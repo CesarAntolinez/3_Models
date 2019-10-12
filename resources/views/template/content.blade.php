@@ -21,7 +21,6 @@
 
     @include("template.header")
     @include("template.menu")
-    @include("template.body")
     @yield('content')
     @include('template.footer')
 

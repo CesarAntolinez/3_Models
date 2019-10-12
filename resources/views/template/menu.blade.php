@@ -21,16 +21,16 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="nav-icon fas fa-user"></i><p> usuarios</p></a>
+                    <a href="{{ url('/usuarios') }}" class="nav-link"><i class="nav-icon fas fa-user"></i><p> usuarios</p></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="nav-icon fas fa-house-damage"></i><p> companias</p></a>
+                    <a href="{{ url('/companias') }}" class="nav-link"><i class="nav-icon fas fa-house-damage"></i><p> companias</p></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Roles</p></a>
+                    <a href="{{ url('/roles') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Roles</p></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Modulos</p></a>
+                    <a href="{{ url('/modules') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Modulos</p></a>
                 </li>
             </ul>
         </nav>
