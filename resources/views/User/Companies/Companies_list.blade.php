@@ -105,7 +105,7 @@
                         error : function(xhr, status) {
                             alert('Disculpe, existió un problema');
                         },
-                        complete : function(xhr, status) {
+                        success : function(xhr, status) {
                             info.remove();
                             swalWithBootstrapButtons.fire(
                                 'Eliminado!',

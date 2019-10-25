@@ -99,6 +99,7 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return response()->json([ 'message' => 'Usuario Eliminado']);
     }
 }

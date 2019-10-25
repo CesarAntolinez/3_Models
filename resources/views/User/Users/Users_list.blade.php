@@ -89,7 +89,7 @@
 
             swalWithBootstrapButtons.fire({
                 title: 'Desea borrar?',
-                text: "Esta compañia",
+                text: "Este usuario",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Aceptar',
@@ -98,7 +98,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "{{ url('/companias') }}" + '/' + data['id'],
+                        url: "{{ url('/usuarios') }}" + '/' + data['id'],
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}",
@@ -107,11 +107,11 @@
                         error : function(xhr, status) {
                             alert('Disculpe, existió un problema');
                         },
-                        complete : function(xhr, status) {
+                        success : function(xhr, status) {
                             info.remove();
                             swalWithBootstrapButtons.fire(
                                 'Eliminado!',
-                                'La compañia fue eliminada. ',
+                                'El usuario fue eliminado. ',
                                 'success'
                             );
                         }
