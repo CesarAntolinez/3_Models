@@ -9,6 +9,7 @@
 
     <!-- PLugins -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
@@ -29,9 +30,11 @@
 <!-- Plugins -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
 <!-- JS -->
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
+@yield('script')
 
 </body>
 </html>

@@ -14,7 +14,12 @@
 Route::get('/', function () {
     return view('template.content');
 });
-Route::get('/companias', 'Companias@index');
-Route::get('/roles', 'Roles@index');
-Route::get('/usuarios', 'Users@index');
-Route::get('/modules', 'Modules@index');
+//Route::get('/companias', 'CompaniasController@index');
+//Route::get('/roles', 'RolesController@index');
+//Route::get('/usuarios', 'UsuariosController@index');
+//Route::get('/modules', 'ModulosController@index');
+
+Route::resource('companias', 'CompaniasController');
+Route::resource('roles', 'RolesController');
+Route::resource('usuarios', 'UsuariosController');
+Route::resource('modules', 'ModulosController');
