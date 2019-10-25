@@ -33,8 +33,6 @@ class CompaniasController extends Controller
         $compania = new Company();
         $rsp = $request->all();
 
-
-
         $compania->nit = $rsp['nit'];
         $compania->nombre = $rsp['name'];
         $compania->direccion = $rsp['direccion'];
@@ -63,7 +61,9 @@ class CompaniasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $compania = Company::find($id);
+
+        return view('User.Companies.edit', ['company' => $compania]);
     }
 
     /**
@@ -75,7 +75,10 @@ class CompaniasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $compania = $request->except(['_token', '_method']);
+        Company::where('id', '=', $id )->update($compania);
+
+        return Redirect('companias')->with('message','Editado Satisfactoriamente !');
     }
 
     /**

@@ -27,7 +27,26 @@
                     </div>
                 </div>
                 <div class="card-body">
-
+                    <form action="{{ url('/companias/' .  $company->id) }}" class="form" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ $company->nombre }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="nit">NIT</label>
+                            <input type="text" name="nit" id="nit" class="form-control" value="{{ $company->nit }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" name="direccion" id="direccion" class="form-control" value="{{ $company->direccion }}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success float-right"><i class="fa fa-save"></i> Editar</button>
+                            <a href="{{ url('/companias') }}" class="btn btn-default float-left"><i class="fa fa-arrow-left"></i> Regresar</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

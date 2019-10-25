@@ -47,6 +47,7 @@
                                     <td>{{ $item['direccion'] }}</td>
                                     <td>
                                         <button class="btn btn-danger eliminar" data-id="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
+                                        <a href="{{ url('/companias/' . $item['id'] . '/edit') }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</a>
                                     </td>
                                 </tr>
                             @endforeach
