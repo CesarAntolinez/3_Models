@@ -18,6 +18,7 @@ class CreateModulesTable extends Migration
             $table->string('nombre');
             $table->string('ruta');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

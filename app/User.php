@@ -18,6 +18,8 @@ class User extends Authenticatable
 
     protected $casts = [];
 
+    protected $dates = ['deleted_at'];
+
     public function companies()
     {
         return $this->belongsToMany('App/Company');

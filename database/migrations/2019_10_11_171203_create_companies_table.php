@@ -18,6 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('nit')->unique();
             $table->string('nombre');
             $table->string('direccion');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
