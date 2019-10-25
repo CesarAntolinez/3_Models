@@ -27,7 +27,21 @@
                     </div>
                 </div>
                 <div class="card-body">
-
+                    <form action="{{ url('/modules') }}" class="form" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="ruta">Ruta</label>
+                            <input type="text" name="ruta" id="ruta" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success float-right"><i class="fa fa-plus"></i> Crear</button>
+                            <a href="{{ url('/modules') }}" class="btn btn-default float-left"><i class="fa fa-arrow-left"></i> Regresar</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
