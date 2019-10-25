@@ -63,7 +63,9 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+
+        return view('User.Users.edit', ['usuario' => $usuario]);
     }
 
     /**
@@ -75,7 +77,18 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::find($id);
+        $rsp = $request->all();
+
+        $usuario->cedula = $rsp['cedula'];
+        $usuario->nombre = $rsp['nombre'];
+        $usuario->correo = $rsp['correo'];
+        $usuario->telefono = $rsp['telefono'];
+        $usuario->password = bcrypt($rsp['password']);
+
+        $usuario->save();
+
+        return Redirect('usuarios')->with('message','Editado Satisfactoriamente !');
     }
 
     /**
