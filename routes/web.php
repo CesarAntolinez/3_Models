@@ -23,3 +23,4 @@ Route::resource('companias', 'CompaniasController');
 Route::resource('roles', 'RolesController');
 Route::resource('usuarios', 'UsuariosController');
 Route::resource('modules', 'ModulosController');
+//Route::put('/modules', 'ModulosController@update');

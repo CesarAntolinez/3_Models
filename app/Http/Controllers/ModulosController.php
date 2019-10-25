@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Module;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,9 @@ class ModulosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modulo = Module::find($id);
+
+        return view('User.Modules.edit', ['modulo' => $modulo]);
     }
 
     /**
@@ -71,7 +74,15 @@ class ModulosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rol = Module::find($id);
+        $rsp = $request->all();
+
+        $rol->nombre = $rsp['nombre'];
+        $rol->ruta = $rsp['ruta'];
+
+        $rol->save();
+
+        return Redirect('modules')->with('message','Guardado Satisfactoriamente !');
     }
 
     /**
@@ -82,6 +93,7 @@ class ModulosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Module::find($id)->delete();
+        return response()->json([ 'message' => 'modulo Eliminado']);
     }
 }
