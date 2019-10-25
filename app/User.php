@@ -20,6 +20,8 @@ class User extends Authenticatable
 
     protected $casts = [];
 
+    public $timestamps = true;
+
     public function companies()
     {
         return $this->belongsToMany('App/Company');

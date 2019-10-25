@@ -13,6 +13,8 @@ class Role extends Model
 
     protected $fillable = ['id', 'nombre'];
 
+    public $timestamps = true;
+
     public function users()
     {
         return $this->belongsToMany('App/User');

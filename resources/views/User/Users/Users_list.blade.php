@@ -35,6 +35,7 @@
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Telefono</th>
+                                <th>Acción</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,13 +46,79 @@
                                     <td>{{ $item['nombre'] }}</td>
                                     <td>{{ $item['correo'] }}</td>
                                     <td>{{ $item['telefono'] }}</td>
+                                    <td>
+                                        <button class="btn btn-danger eliminar" data-id="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
+                                        <a href="{{ url('/companias/' . $item['id'] . '/edit') }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <div class="card-footer">
+                    <a href="{{ url('/usuarios/create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Crear</a>
+                </div>
             </div>
         </section>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        @if (session('message'))
+        Swal.fire({
+            type: 'success',
+            title: '{{ session('message') }}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+        @endif
+
+        $('.eliminar').click(function (e) {
+            var info = $(this).parents('tr');
+            var data = $(this).data();
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: 'Desea borrar?',
+                text: "Esta compañia",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar',
+                cancelButtonText: 'cancelar',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: "{{ url('/companias') }}" + '/' + data['id'],
+                        type: 'DELETE',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        dataType : 'json',
+                        error : function(xhr, status) {
+                            alert('Disculpe, existió un problema');
+                        },
+                        complete : function(xhr, status) {
+                            info.remove();
+                            swalWithBootstrapButtons.fire(
+                                'Eliminado!',
+                                'La compañia fue eliminada. ',
+                                'success'
+                            );
+                        }
+                    });
+                }
+            })
+        });
+    </script>
+@endsection
+

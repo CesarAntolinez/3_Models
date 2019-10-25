@@ -13,6 +13,8 @@ class Company extends Model
 
     protected $fillable = ['id', 'nit', 'nombre', 'direccion'];
 
+    public $timestamps = true;
+
 
     public function users()
     {

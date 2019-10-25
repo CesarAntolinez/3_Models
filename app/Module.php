@@ -12,6 +12,8 @@ class Module extends Model
 
     protected $fillable = ['id', 'nombre'];
 
+    public $timestamps = true;
+
     public function roles()
     {
         return $this->belongsToMany('App/Role');

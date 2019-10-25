@@ -27,7 +27,33 @@
                     </div>
                 </div>
                 <div class="card-body">
-
+                    <form action="{{ url('/usuarios') }}" class="form" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="cedula">Cedula</label>
+                            <input type="text" name="cedula" id="cedula" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="text" name="correo" id="correo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Telefono</label>
+                            <input type="text" name="telefono" id="telefono" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success float-right"><i class="fa fa-plus"></i> Crear</button>
+                            <a href="{{ url('/usuarios') }}" class="btn btn-default float-left"><i class="fa fa-arrow-left"></i> Regresar</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
