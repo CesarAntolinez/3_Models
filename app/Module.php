@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Module extends Model
 {
+    use SoftDeletes;
     protected $table = "modules";
+
     protected $fillable = ['id', 'nombre'];
-    protected $dates = ['deleted_at'];
 
     public function roles()
     {
