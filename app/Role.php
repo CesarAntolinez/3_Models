@@ -17,11 +17,11 @@ class Role extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App/User');
+        return $this->belongsToMany('App/User', 'user_role', 'role_id', 'user_id');
     }
 
     public function modules()
     {
-        return $this->belongsToMany('App/Module');
+        return $this->belongsToMany('App/Module', 'model_role', 'role_id', 'module_id');
     }
 }
