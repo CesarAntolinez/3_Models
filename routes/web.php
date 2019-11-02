@@ -21,6 +21,10 @@ Route::get('/', function () {
 
 Route::resource('companias', 'CompaniasController');
 Route::resource('roles', 'RolesController');
+
+// Rutas para usuario
 Route::resource('usuarios', 'UsuariosController');
+Route::get('/usuarios/roles/{id}', 'UsuariosController@roles');
+
 Route::resource('modules', 'ModulosController');
 //Route::put('/modules', 'ModulosController@update');

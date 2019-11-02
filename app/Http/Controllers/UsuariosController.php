@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -101,5 +102,11 @@ class UsuariosController extends Controller
     {
         User::find($id)->delete();
         return response()->json([ 'message' => 'Usuario Eliminado']);
+    }
+
+    public function roles($id)
+    {
+        $user = User::find($id);
+        return view('User.Users.roles.list', ['roles' => $user->roles]);
     }
 }
