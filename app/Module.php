@@ -16,7 +16,7 @@ class Module extends Model
 
     public function roles()
     {
-        return $this->belongsToMany('App/Role', 'model_role', 'module_id', 'role_id');
+        return $this->belongsToMany('App\Role', 'model_role', 'module_id', 'role_id');
     }
 
 }
