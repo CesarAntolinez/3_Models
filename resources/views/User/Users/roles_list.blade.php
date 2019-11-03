@@ -37,12 +37,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($roles as $item)
+                            @foreach($user->roles as $item)
                                 <tr>
                                     <td>{{ $item['id'] }}</td>
                                     <td>{{ $item['nombre'] }}</td>
                                     <td>
-                                        <button class="btn btn-danger eliminar" data-id="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
+                                        <button class="btn btn-danger eliminar" data-user="{{ $user['id'] }}" data-role="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -92,7 +92,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "{{ url('/usuarios/roles/') }}" + '/' + data['id'],
+                        url: "{{ url('/usuarios/roles/') }}" + '/' + data['user'] + '/' + data['role'],
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}",

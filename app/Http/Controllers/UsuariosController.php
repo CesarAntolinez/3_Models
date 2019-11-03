@@ -104,9 +104,31 @@ class UsuariosController extends Controller
         return response()->json([ 'message' => 'Usuario Eliminado']);
     }
 
+    /**
+     * view for the roles of a user
+     *
+     * @param $id int ID of user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function roles($id)
     {
         $user = User::find($id);
-        return view('User.Users.roles.list', ['roles' => $user->roles]);
+        $user->roles;
+        return $user;
+        //return view('User.Users.roles_list', ['user' => $user]);
+    }
+
+    /**
+     * Delete relation of role and user
+     *
+     * @param $user_id
+     * @param $role_id
+     * @return void
+     */
+    public function roles_destroy($user_id, $role_id)
+    {
+        $user = User::find($user_id);
+        $user->roles()->detach($role_id);
+        return response()->json([ 'message' => 'Rol del usuario eliminado']);
     }
 }

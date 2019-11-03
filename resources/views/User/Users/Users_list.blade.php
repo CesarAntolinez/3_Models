@@ -48,6 +48,7 @@
                                     <td>{{ $item['telefono'] }}</td>
                                     <td>
                                         <button class="btn btn-danger eliminar" data-id="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
+                                        <a href="{{ url('/usuarios/roles/' . $item['id'] ) }}" class="btn btn-primary"><i class="fa fa-user"></i> Roles</a>
                                         <a href="{{ url('/usuarios/' . $item['id'] . '/edit') }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</a>
                                     </td>
                                 </tr>
