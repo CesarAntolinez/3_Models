@@ -37,7 +37,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($user->roles as $item)
+                            @foreach($user->roles() as $item)
                                 <tr>
                                     <td>{{ $item['id'] }}</td>
                                     <td>{{ $item['nombre'] }}</td>

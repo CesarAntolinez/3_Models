@@ -11,7 +11,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                            <li class="breadcrumb-item active">Usuarios</li>
+                            <li class="breadcrumb-item">Usuarios</li>
+                            <li class="breadcrumb-item active">Compañias</li>
                         </ol>
                     </div>
                 </div>
@@ -20,7 +21,7 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Usuarios</h3>
+                    <h3 class="card-title">Compañias</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fas fa-minus"></i></button>
                     </div>
@@ -31,26 +32,20 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Cedula</th>
+                                <th>Nit</th>
                                 <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Telefono</th>
                                 <th>Acción</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $item)
+                            @foreach($user->companies as $item)
                                 <tr>
                                     <td>{{ $item['id'] }}</td>
-                                    <td>{{ $item['cedula'] }}</td>
+                                    <td>{{ $item['nit'] }}</td>
                                     <td>{{ $item['nombre'] }}</td>
-                                    <td>{{ $item['correo'] }}</td>
-                                    <td>{{ $item['telefono'] }}</td>
                                     <td>
-                                        <button class="btn btn-danger eliminar" data-id="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
-                                        <a href="{{ url('/usuarios/roles/' . $item['id'] ) }}" class="btn btn-primary"><i class="fa fa-user"></i> Roles</a>
-                                        <a href="{{ url('/usuarios/companies/' . $item['id'] ) }}" class="btn btn-info"><i class="fa fa-home"></i> Compañias</a>
-                                        <a href="{{ url('/usuarios/' . $item['id'] . '/edit') }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</a>
+
+                                        <button class="btn btn-danger eliminar" data-user="{{ $user['id'] }}" data-company="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,7 +55,8 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="{{ url('/usuarios/create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Crear</a>
+                    <a href="{{ route('usuarios.companies', ['id'=> $user['id']]) }}" class="btn btn-default float-left"><i class="fa fa-arrow-left"></i> Regresar</a>
+                    <a href="{{ route('usuarios.companies.add', ['id'=> $user['id']]) }}" class="btn btn-success float-right"><i class="fa fa-plus"></i> Agregar Compañia</a>
                 </div>
             </div>
         </section>
@@ -91,7 +87,7 @@
 
             swalWithBootstrapButtons.fire({
                 title: 'Desea borrar?',
-                text: "Este usuario",
+                text: "Esta compañia",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Aceptar',
@@ -100,7 +96,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "{{ url('/usuarios') }}" + '/' + data['id'],
+                        url: "{{ url('/usuarios/companies/') }}" + '/' + data['user'] + '/' + data['company'],
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}",
@@ -113,7 +109,7 @@
                             info.remove();
                             swalWithBootstrapButtons.fire(
                                 'Eliminado!',
-                                'El usuario fue eliminado. ',
+                                'La compañia fue eliminado del usuario. ',
                                 'success'
                             );
                         }
@@ -123,4 +119,3 @@
         });
     </script>
 @endsection
-

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -113,7 +114,6 @@ class UsuariosController extends Controller
     public function roles($id)
     {
         $user = User::find($id);
-        $user->roles;
 
         return view('User.Users.roles_list', ['user' => $user]);
     }
@@ -162,6 +162,65 @@ class UsuariosController extends Controller
         $user->save();
 
         return Redirect('usuarios/roles/' . $user_id)->with('message','agregado Satisfactoriamente !');
+
+    }
+
+    /**
+     * view for the companies of a user
+     *
+     * @param $id int ID of user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function companies($id)
+    {
+        $user = User::find($id);
+        return view('User.Users.companies_list', ['user' => $user]);
+    }
+
+    /**
+     * Delete relation of company and user
+     *
+     * @param $user_id
+     * @param $company_id
+     * @return void
+     */
+    public function companies_destroy($user_id, $company_id)
+    {
+        $user = User::find($user_id);
+        $user->companies()->detach($company_id);
+
+        return response()->json([ 'message' => 'Compañia del usuario eliminado']);
+    }
+
+    /**
+     * Agregar un compañia a un usuario
+     *
+     * @param $user_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function companies_add($user_id)
+    {
+        $companies = Company::with('users')->whereDoesntHave('users', function($query) use ($user_id) {
+            $query->where('user_id', $user_id);
+        })->get();
+
+        return view('User.Users.company_create', ['companies' => $companies->all(), 'user_id' => $user_id]);
+    }
+
+    /**
+     * Agregar un compania a un usuario post
+     *
+     * @param Request $request
+     * @param $user_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function companies_attach(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+        $user->companies()->attach($request->company);
+        $user->save();
+
+        return Redirect('usuarios/companies/' . $user_id)->with('message','agregado Satisfactoriamente !');
 
     }
 

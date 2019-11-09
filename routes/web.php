@@ -37,6 +37,20 @@ Route::post('/usuarios/roles/{user_id}', [
     'as' => 'usuarios.roles.attach',
     'uses' => 'UsuariosController@role_attach'
 ]);
+Route::get('/usuarios/companies/{id}', [
+    'as' => 'usuarios.companies',
+    'uses' => 'UsuariosController@companies'
+]);
+Route::delete('/usuarios/companies/{user_id}/{role_id}', 'UsuariosController@companies_destroy');
+Route::get('/usuarios/companies/{id}/add', [
+    'as' => 'usuarios.companies.add',
+    'uses' => 'UsuariosController@companies_add'
+]);
+Route::post('/usuarios/companies/{user_id}', [
+    'as' => 'usuarios.companies.attach',
+    'uses' => 'UsuariosController@companies_attach'
+]);
+
 
 Route::resource('modules', 'ModulosController');
 //Route::put('/modules', 'ModulosController@update');
