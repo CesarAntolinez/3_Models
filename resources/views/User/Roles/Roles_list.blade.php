@@ -43,6 +43,7 @@
                                     <td>
                                         <button class="btn btn-danger eliminar" data-id="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
                                         <a href="{{ url('/roles/' . $item['id'] . '/edit') }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</a>
+                                        <a href="{{ url('/roles/modules/' . $item['id']) }}" class="btn btn-info"><i class="fa fa-edit"></i> Modulos</a>
                                     </td>
                                 </tr>
                             @endforeach

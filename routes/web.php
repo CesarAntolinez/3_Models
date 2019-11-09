@@ -20,7 +20,21 @@ Route::get('/', function () {
 //Route::get('/modules', 'ModulosController@index');
 
 Route::resource('companias', 'CompaniasController');
+//Roles
 Route::resource('roles', 'RolesController');
+Route::get('/roles/modules/{id}', [
+    'as' => 'roles.modules',
+    'uses' => 'RolesController@modules'
+]);
+Route::delete('/roles/modules/{role_id}/{module_id}', 'RolesController@modules_destroy');
+Route::get('/roles/modules/{id}/add', [
+    'as' => 'roles.modules.add',
+    'uses' => 'RolesController@modules_add'
+]);
+Route::post('/roles/modules/{role_id}', [
+    'as' => 'roles.modules.attach',
+    'uses' => 'RolesController@modules_attach'
+]);
 
 // Rutas para usuario
 Route::resource('usuarios', 'UsuariosController');
