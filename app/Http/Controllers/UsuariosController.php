@@ -133,6 +133,12 @@ class UsuariosController extends Controller
         return response()->json([ 'message' => 'Rol del usuario eliminado']);
     }
 
+    /**
+     * Agregar un rol a un usuario
+     *
+     * @param $user_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function roles_add($user_id)
     {
         $roles = Role::with('users')->whereDoesntHave('users', function($query) use ($user_id) {
@@ -142,6 +148,13 @@ class UsuariosController extends Controller
         return view('User.Users.role_create', ['roles' => $roles->all(), 'user_id' => $user_id]);
     }
 
+    /**
+     * Agregar un rol a un usuario post
+     *
+     * @param Request $request
+     * @param $user_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function role_attach(Request $request, $user_id)
     {
         $user = User::find($user_id);
