@@ -224,5 +224,29 @@ class UsuariosController extends Controller
 
     }
 
+    public function status(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+        if ($user->status){
+            //Esta activo y lo desactivo
+            $user->status = 0;
+            $user->save();
+            return response()->json([
+                'title'     => 'Desactivado',
+                'message'   => 'El usuario esta Desactivado',
+                'status'    => false
+            ]);
+        }else{
+            //Esta desactivo y lo activo
+            $user->status = 1;
+            $user->save();
+            return response()->json([
+                'title'     => 'Activado',
+                'message'   => 'El usuario esta Activado',
+                'status'    => true
+            ]);
+        }
+    }
+
 
 }

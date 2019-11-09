@@ -51,6 +51,7 @@
                                         <a href="{{ url('/usuarios/roles/' . $item['id'] ) }}" class="btn btn-primary"><i class="fa fa-user"></i> Roles</a>
                                         <a href="{{ url('/usuarios/companies/' . $item['id'] ) }}" class="btn btn-info"><i class="fa fa-home"></i> Compañias</a>
                                         <a href="{{ url('/usuarios/' . $item['id'] . '/edit') }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar</a>
+                                        <button class="btn {{ ($item['status'] == 1) ? 'btn-success' : 'btn-danger' }}  status" data-id="{{ $item['id'] }}" data-status="{{ ($item['status'] == 1) ? 1 : 0 }}"><i class="fa {{ ($item['status'] == 1) ? 'fa-unlock' : 'fa-lock' }}"></i>  {{ ($item['status'] == 1) ? 'Activo' : 'Desactivo' }}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -120,6 +121,57 @@
                     });
                 }
             })
+        });
+
+        $('.status').click(function (e) {
+            var btn = $(this);
+            var data = btn.data();
+            btn.addClass('overlay dark disabled');
+
+            $.ajax({
+                url: "{{ url('/usuarios/status/') }}" + '/' + data['id'],
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "status": data['status'],
+                },
+                dataType : 'json',
+                error : function(xhr, status) {
+                    alert('Disculpe, existió un problema');
+                },
+                success : function(xhr, status) {
+                    console.log("xhr" + xhr);
+                    console.log("status" + status);
+                    if (xhr.status)//Para activar usuario
+                    {
+                        //remover clases
+                        btn.removeClass('overlay dark disabled btn-danger');
+                        btn.children('i').removeClass('fa-lock');
+
+                        //Agregar clases
+                        btn.addClass('btn-success');
+                        btn.children('i').addClass('fa-unlock');
+
+                        btn.contents().last().replaceWith(" Activo");
+                    }else{//Para desactivar usuario usuario
+                        //remover clases
+                        btn.removeClass('overlay dark disabled btn-success');
+                        btn.children('i').removeClass('fa-unlock');
+
+                        //Agregar clases
+                        btn.addClass('btn-danger');
+                        btn.children('i').addClass('fa-lock');
+
+                        btn.contents().last().replaceWith(" Desactivo");
+                    }
+
+                    swalWithBootstrapButtons.fire(
+                        xhr.title,
+                        xhr.message,
+                        'success'
+                    );
+                }
+            });
         });
     </script>
 @endsection

@@ -64,6 +64,10 @@ Route::post('/usuarios/companies/{user_id}', [
     'as' => 'usuarios.companies.attach',
     'uses' => 'UsuariosController@companies_attach'
 ]);
+Route::post('/usuarios/status/{user_id}', [
+    'as' => 'usuarios.status',
+    'uses' => 'UsuariosController@status'
+]);
 
 
 Route::resource('modules', 'ModulosController');
