@@ -42,6 +42,7 @@
                                     <td>{{ $item['id'] }}</td>
                                     <td>{{ $item['nombre'] }}</td>
                                     <td>
+
                                         <button class="btn btn-danger eliminar" data-user="{{ $user['id'] }}" data-role="{{ $item['id'] }}"><i class="fa fa-trash"></i> Eliminar</button>
                                     </td>
                                 </tr>
@@ -52,7 +53,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="{{ url('/usuarios/roles/create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Agregar rol</a>
+                    <a href="{{ route('usuarios.roles.add', ['id'=> $user['id']]) }}" class="btn btn-success "><i class="fa fa-plus"></i> Agregar rol</a>
                 </div>
             </div>
         </section>

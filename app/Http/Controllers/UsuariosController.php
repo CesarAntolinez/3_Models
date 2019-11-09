@@ -114,8 +114,8 @@ class UsuariosController extends Controller
     {
         $user = User::find($id);
         $user->roles;
-        return $user;
-        //return view('User.Users.roles_list', ['user' => $user]);
+
+        return view('User.Users.roles_list', ['user' => $user]);
     }
 
     /**
@@ -129,6 +129,28 @@ class UsuariosController extends Controller
     {
         $user = User::find($user_id);
         $user->roles()->detach($role_id);
+
         return response()->json([ 'message' => 'Rol del usuario eliminado']);
     }
+
+    public function roles_add($user_id)
+    {
+        $roles = Role::with('users')->whereDoesntHave('users', function($query) use ($user_id) {
+            $query->where('user_id', $user_id);
+        })->get();
+
+        return view('User.Users.role_create', ['roles' => $roles->all(), 'user_id' => $user_id]);
+    }
+
+    public function role_attach(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+        $user->roles()->attach($request->rol);
+        $user->save();
+
+        return Redirect('usuarios/roles/' . $user_id)->with('message','agregado Satisfactoriamente !');
+
+    }
+
+
 }

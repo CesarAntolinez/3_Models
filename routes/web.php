@@ -24,8 +24,19 @@ Route::resource('roles', 'RolesController');
 
 // Rutas para usuario
 Route::resource('usuarios', 'UsuariosController');
-Route::get('/usuarios/roles/{id}', 'UsuariosController@roles');
+Route::get('/usuarios/roles/{id}', [
+    'as' => 'usuarios.roles',
+    'uses' => 'UsuariosController@roles'
+]);
 Route::delete('/usuarios/roles/{user_id}/{role_id}', 'UsuariosController@roles_destroy');
+Route::get('/usuarios/roles/{id}/add', [
+    'as' => 'usuarios.roles.add',
+    'uses' => 'UsuariosController@roles_add'
+]);
+Route::post('/usuarios/roles/{user_id}', [
+    'as' => 'usuarios.roles.attach',
+    'uses' => 'UsuariosController@role_attach'
+]);
 
 Route::resource('modules', 'ModulosController');
 //Route::put('/modules', 'ModulosController@update');
