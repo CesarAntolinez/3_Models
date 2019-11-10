@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CompaniasController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:company');
+    }
     public function index()
     {
         return view('User.Companies.Companies_list', ['companies' => Company::all()]);

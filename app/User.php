@@ -32,12 +32,6 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id')->withTimestamps();
     }
 
-    public function authorizeRoles($roles)
-    {
-        abort_unless($this->hasAnyRole($roles), 401);
-        return true;
-    }
-
     public function hasAnyRole($roles)
     {
         if (is_array($roles)) {
@@ -56,8 +50,20 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
-        if ($this->roles()->where('name', $role)->first()) {
+        if ($this->roles()->where('nombre', $role)->first()) {
             return true;
+        }
+        return false;
+    }
+
+    public function hasModule($module)
+    {
+        $roles = $this->roles;
+        foreach ($roles as $role)
+        {
+            if ($role->modules()->where('ruta', $module)->first()) {
+                return true;
+            }
         }
         return false;
     }

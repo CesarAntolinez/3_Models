@@ -6,16 +6,18 @@ use App\Company;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
 
-    public function __construct(Request $request)
+    public function __construct()
     {
-        //$this->middleware('auth');
-
+        $this->middleware('auth');
+        $this->middleware('role:user');
     }
+
     public function index()
     {
         return view('User.Users.Users_list', ['users' => User::all()]);

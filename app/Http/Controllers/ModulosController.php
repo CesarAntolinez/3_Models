@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ModulosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:module');
+    }
+
     public function index()
     {
         return view('User.Modules.Modules_list', ['modules' => Module::all()]);

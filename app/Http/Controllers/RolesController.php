@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:role');
+    }
+
     public function index()
     {
         return view('User.Roles.Roles_list', ['roles' => Role::all()]);
