@@ -69,5 +69,10 @@ class LoginController extends Controller
         return 'email';
     }
 
+    protected function loggedOut(Request $request)
+    {
+        return redirect('/login');
+    }
+
 
 }
