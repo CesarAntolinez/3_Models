@@ -6,9 +6,16 @@ use App\Company;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
+
+    public function __construct(Request $request)
+    {
+        //$this->middleware('auth');
+
+    }
     public function index()
     {
         return view('User.Users.Users_list', ['users' => User::all()]);
@@ -39,7 +46,7 @@ class UsuariosController extends Controller
         $usuario->nombre = $rsp['nombre'];
         $usuario->correo = $rsp['correo'];
         $usuario->telefono = $rsp['telefono'];
-        $usuario->password = bcrypt($rsp['password']);
+        $usuario->password = Hash::make($rsp['password']);
 
         $usuario->save();
 
@@ -86,7 +93,7 @@ class UsuariosController extends Controller
         $usuario->nombre = $rsp['nombre'];
         $usuario->correo = $rsp['correo'];
         $usuario->telefono = $rsp['telefono'];
-        $usuario->password = bcrypt($rsp['password']);
+        $usuario->password = Hash::make($rsp['password']);
 
         $usuario->save();
 

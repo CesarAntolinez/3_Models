@@ -72,3 +72,7 @@ Route::post('/usuarios/status/{user_id}', [
 
 Route::resource('modules', 'ModulosController');
 //Route::put('/modules', 'ModulosController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,4 +38,36 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return Response
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('correo', 'password');
+
+        if (Auth::attempt(['correo' => $credentials->correo, 'password' =>  $credentials->password, 'status' => 1])) {
+            // Authentication passed...
+            return redirect()->route('home');
+        }
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        return $this->guard()->attempt(
+            ['correo' => $credentials['email'], 'password' =>  $credentials['password'], 'status' => 1], $request->filled('remember')
+        );
+    }
+
+    public function username()
+    {
+        return 'email';
+    }
+
+
 }
