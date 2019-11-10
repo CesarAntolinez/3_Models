@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-body">
-                Start creating your amazing application!
+
             </div>
             <div class="card-footer">
                 Footer

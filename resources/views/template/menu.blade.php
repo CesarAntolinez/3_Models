@@ -20,18 +20,28 @@
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="{{ url('/usuarios') }}" class="nav-link"><i class="nav-icon fas fa-user"></i><p> usuarios</p></a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/companias') }}" class="nav-link"><i class="nav-icon fas fa-house-damage"></i><p> companias</p></a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/roles') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Roles</p></a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/modules') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Modulos</p></a>
-                </li>
+                @if(auth()->user()->hasModule('user'))
+                    <li class="nav-item">
+                        <a href="{{ url('/usuarios') }}" class="nav-link"><i class="nav-icon fas fa-user"></i><p> usuarios</p></a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasModule('company'))
+                    <li class="nav-item">
+                        <a href="{{ url('/companias') }}" class="nav-link"><i class="nav-icon fas fa-house-damage"></i><p> companias</p></a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasModule('role'))
+                    <li class="nav-item">
+                        <a href="{{ url('/roles') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Roles</p></a>
+                    </li>
+                @endif
+                @if(auth()->user()->hasModule('module'))
+                    <li class="nav-item">
+                        <a href="{{ url('/modules') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Modulos</p></a>
+                    </li>
+                @endif
+
+
             </ul>
         </nav>
     </div>
