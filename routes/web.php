@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('template.content');
+    return view('auth.login');
 });
 //Route::get('/companias', 'CompaniasController@index');
 //Route::get('/roles', 'RolesController@index');

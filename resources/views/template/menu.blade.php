@@ -40,8 +40,6 @@
                         <a href="{{ url('/modules') }}" class="nav-link"><i class="nav-icon fas fa-circle"></i><p> Modulos</p></a>
                     </li>
                 @endif
-
-
             </ul>
         </nav>
     </div>
