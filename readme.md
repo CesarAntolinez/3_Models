@@ -1,9 +1,10 @@
-#Introducción
+# Introducción
 Este proyecto tiene como foco el crud de 4 entidades "**Empresass**, **Usuarios**, **Roles**, **Modulos**" y un login que permite aceder a modulos según los modulos asignados a un rol y estos roles asignados a un usuario.
 
-#Base de datos
+# Base de datos
 Este es un diagrama de la base de datos
-<p align="center"><img src="public/img/db_model.svg" width="400"></p>
+![Alt text](./public/img/db_model.svg)
+<p align="center"><img src="./public/img/db_model.svg" width="400"></p>
 
 # Inicialización
 
