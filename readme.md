@@ -3,8 +3,10 @@ Este proyecto tiene como foco el crud de 4 entidades "**Empresass**, **Usuarios*
 
 # Base de datos
 Este es un diagrama de la base de datos
+<p align="center">
 ![Alt text](./public/img/db_model.svg)
-<p align="center"><img src="./public/img/db_model.svg" width="400"></p>
+<img src="./public/img/db_model.svg" width="400">
+</p>
 
 # Inicialización
 
