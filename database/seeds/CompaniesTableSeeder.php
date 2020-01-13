@@ -13,18 +13,18 @@ class CompaniesTableSeeder extends Seeder
     {
         DB::table('companies')->insert([
             'nit'        => 123456789,
-            'direccion'  => Str::random(10),
-            'nombre'     => Str::random(10),
+            'direccion'  => "Calle 1",
+            'nombre'     => "Empresa 1",
         ]);
         DB::table('companies')->insert([
             'nit'        => 321654987,
-            'direccion'  => Str::random(10),
-            'nombre'     => Str::random(10),
+            'direccion'  => "Calle 2",
+            'nombre'     => "Empresa 2",
         ]);
         DB::table('companies')->insert([
             'nit'        => 369852147,
-            'direccion'  => Str::random(10),
-            'nombre'     => Str::random(10),
+            'direccion'  => "Calle 3",
+            'nombre'     => "Empresa 3",
         ]);
     }
 }

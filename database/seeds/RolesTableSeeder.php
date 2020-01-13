@@ -12,13 +12,13 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            'nombre'    => Str::random(10),
+            'nombre'    => "Rol 1",
         ]);
         DB::table('roles')->insert([
-            'nombre'    => Str::random(10),
+            'nombre'    => "Rol 2",
         ]);
         DB::table('roles')->insert([
-            'nombre'    => Str::random(10),
+            'nombre'    => "Rol 3",
         ]);
     }
 }

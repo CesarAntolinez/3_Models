@@ -12,16 +12,20 @@ class ModulesTableSeeder extends Seeder
     public function run()
     {
         DB::table('modules')->insert([
-            'nombre'    => Str::random(10),
-            'ruta'      => Str::random(10),
+            'nombre'    => "Empresa",
+            'ruta'      => "company",
         ]);
         DB::table('modules')->insert([
-            'nombre'    => Str::random(10),
-            'ruta'      => Str::random(10),
+            'nombre'    => "Usuario",
+            'ruta'      => "user",
         ]);
         DB::table('modules')->insert([
-            'nombre'    => Str::random(10),
-            'ruta'      => Str::random(10),
+            'nombre'    => "Roles",
+            'ruta'      => "role",
+        ]);
+        DB::table('modules')->insert([
+            'nombre'    => "Modulos",
+            'ruta'      => "module",
         ]);
     }
 }
