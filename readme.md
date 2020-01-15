@@ -8,7 +8,7 @@ Este es un diagrama de la base de datos
 	<img src="./public/img/bd_model.svg" alt="model" style="height: 400px">
 </p>
 
-#Instrucciones
+# Instrucciones
 
 Para poder inicializar el sigiente repositorio devera
 
