@@ -3,12 +3,12 @@ Este proyecto tiene como foco el crud de 4 entidades "**Empresass**, **Usuarios*
 
 # Base de datos
 Este es un diagrama de la base de datos
+
 <p align="center">
-	![Alt text](public/img/db_model.svg)
-	<img src="public/img/db_model.svg" width="400">
+	<img src="./public/img/bd_model.svg" alt="model" style="height: 400px">
 </p>
 
-# Inicialización
+#Instrucciones
 
 Para poder inicializar el sigiente repositorio devera
 
