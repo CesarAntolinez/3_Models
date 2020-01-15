@@ -1,5 +1,5 @@
 # Introducción
-Este proyecto tiene como foco el crud de 4 entidades "**Empresass**, **Usuarios**, **Roles**, **Modulos**" y un login que permite aceder a modulos según los modulos asignados a un rol y estos roles asignados a un usuario.
+Este proyecto tiene como foco el crud de 4 entidades "**Empresass**, **Usuarios**, **Roles**, **Modulos**" y un login que permite aceder a modulos según los modulos asignados a un rol y estos roles asignados a un usuario a base de **larabel**.
 
 # Base de datos
 Este es un diagrama de la base de datos
@@ -20,5 +20,5 @@ Para poder inicializar el sigiente repositorio devera
 - Ejecutar **php artisan serve** para verifivcar la instalación.
 - Ejecutar **php artisan migrate** para migrar la base de datos.
 - Ejecutar **php artisan migrate --seed** para insertar los datos de prueba
+- Para ingresar el usuario es **administrador@gmail.com** y la clave **password**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
